@@ -1,0 +1,6 @@
+[book]
+authors = ["fgarnadi"]
+language = "en"
+multilingual = false
+src = "src"
+title = "perpus"
