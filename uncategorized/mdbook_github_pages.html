@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1 - perpus</title>
+        <title>Publishing mdBook as Github Pages - perpus</title>
 
 
         <!-- Custom HTML head -->
@@ -20,25 +20,24 @@
                 'cookie_flags': "SameSite=None;Secure",
             });
         </script>
-        <meta name="description" content="">
+        <meta name="description" content="Miscellaneous stuff.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -47,7 +46,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -100,7 +99,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">perpus</a></li><li class="chapter-item expanded affix "><li class="part-title">Uncategorized</li><li class="chapter-item expanded "><a href="../uncategorized/mdbook_github_pages.html" class="active">Publishing mdBook as Github Pages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -148,31 +147,15 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
-                        </button>
                     </div>
 
                     <h1 class="menu-title">perpus</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
-                        </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
@@ -185,12 +168,114 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="publishing-mdbook-as-github-pages"><a class="header" href="#publishing-mdbook-as-github-pages">Publishing mdBook as Github Pages</a></h1>
+<p><sub>2024-07-18</sub></p>
+<p>Searching for GitBook alternative that you can deploy yourself on Github Pages?</p>
+<p>Using mdBook might be one of the solution that you can use. It's quite simple and even though it's
+created using Rust, no prior knowledge of Rust is required to start creating pages using mdBook.</p>
+<h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
+<h3 id="install-rust"><a class="header" href="#install-rust">Install Rust</a></h3>
+<p>Even no Rust knowledge required, but to actually start, you need to install the Rust toolchain first
+to install the mdBook program. To install the Rust toolchain, please refer to the
+<a href="https://www.rust-lang.org/tools/install">installation guide</a>.</p>
+<h3 id="install-mdbook"><a class="header" href="#install-mdbook">Install mdBook</a></h3>
+<p>Using <code>cargo</code> it's quite simple to install mdBook.</p>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+<p>After that you can check if mdBook is properly using</p>
+<pre><code class="language-bash">mdbook --version
+</code></pre>
+<h3 id="initialize-repository"><a class="header" href="#initialize-repository">Initialize Repository</a></h3>
+<p>Create your book repository in your desired directory with</p>
+<pre><code class="language-bash">mdbook init &lt;book-name&gt;
+</code></pre>
+<p>it will create a new directory <code>&lt;book-name&gt;</code> in your current directory.</p>
+<p>Run the following command in the created directory to serve the book in you local machine.</p>
+<pre><code class="language-bash">mdbook serve # default to serve in 127.0.0.1:3000
+</code></pre>
+<h2 id="publishing-to-github-pages"><a class="header" href="#publishing-to-github-pages">Publishing to Github Pages</a></h2>
+<p>Please refer to <a href="https://docs.github.com/en/pages/quickstart">Github Pages Quickstart</a> to setup
+the repository for Github Pages.</p>
+<p>To simplify the process of publishing, there are github-actions that can be used :</p>
+<ul>
+<li><a href="https://github.com/peaceiris/actions-mdbook">peaceiris/actions-mdbook</a></li>
+<li><a href="https://github.com/peaceiris/actions-gh-pages">peaceiris/actions-gh-pages</a></li>
+</ul>
+<p>You can read the repository for more details, but the excerpt is to create github-action workflow
+that look like this in your repository (i.e in <code>.github/workflows/gh-pages.yml</code>).
+This was taken from the repository examples and modified accordingly.</p>
+<pre><code class="language-yaml"># .github/workflows/gh-pages.yml
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - run: mdbook build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
+</code></pre>
+<p>As this workflow stated, this action will trigger when you push to <code>master</code> branch and will publish
+the static file generated from the build to <code>gh-pages</code> branch that will be served as Github Pages.</p>
+<h2 id="optional-setting-up-google-analytics"><a class="header" href="#optional-setting-up-google-analytics">(Optional) Setting up Google Analytics</a></h2>
+<p>mdBook support additional custom tags that will be added to the build files.
+To add this custom tags, in the root of your project create folder named <code>theme</code>, then create
+a <code>handlebar</code> file named <code>head.hbs</code>. This file can be used to inject the Google Analytics script.</p>
+<pre><code class="language-html">&lt;!-- theme/head.hbs --&gt;
+
+&lt;!-- Google tag (gtag.js) --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"&gt;&lt;/script&gt;
+&lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'GA_MEASUREMENT_ID', {
+        'anonymize_ip': true,
+        'cookie_domain': window.location.hostname,
+        'cookie_flags': "SameSite=None;Secure",
+    });
+&lt;/script&gt;
+</code></pre>
+<p>Extra parameter in the config is to mitigate warning caused by Google Analytics when the page is
+opened using Mozilla Firefox (taken from <a href="https://stackoverflow.com/a/62569420">Stack Overflow</a>).</p>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li><a href="https://rust-lang.github.io/mdBook/">mdBook Documentation</a></li>
+<li><a href="https://docs.github.com/en/pages/quickstart">Github Pages Quickstart</a></li>
+<li><a href="https://github.com/peaceiris/actions-mdbook">peaceiris/actions-mdbook</a></li>
+<li><a href="https://github.com/peaceiris/actions-gh-pages">peaceiris/actions-gh-pages</a></li>
+<li><a href="https://stackoverflow.com/a/62569420">Stack Overflow answer for Google Analytics warning</a></li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -199,6 +284,9 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 
@@ -212,13 +300,10 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
