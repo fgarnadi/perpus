@@ -1,0 +1,11 @@
+# pages metadata (TODO: move to frontmatter?)
+
+[uncategorized]
+
+[uncategorized.mdbook_github_pages]
+title = "Publishing mdBook as Github Pages"
+created_at = 2024-07-18T19:00:00+07:00
+updated_at = 2024-07-18T19:00:00+07:00
+language = "en"
+category = []
+tags = []
